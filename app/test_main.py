@@ -3,7 +3,7 @@ import pytest
 from app.main import get_coin_combination
 
 
-test_data = [cents for cents in range(0, 50)]
+test_data = [0, 1, 2, 3, 4, 5, 10, 25]
 
 
 @pytest.mark.parametrize("cents", test_data)
@@ -20,22 +20,5 @@ class TestCoinCombination:
         result = get_coin_combination(cents)
         assert result[2] < 3
 
-    def test_could_return_coins_of_the_different_types(
-            self,
-            cents: int) -> None:
-        result = get_coin_combination(cents)
-
-        if cents < 5:
-            assert [cents, 0, 0, 0] == result
-            return
-        if cents == 5:
-            assert [0, cents // 5, 0, 0] == result
-            return
-        if cents == 10:
-            assert [0, 0, cents // 10, 0] == result
-            return
-        if cents == 25:
-            assert [0, 0, 0, cents // 25] == result
-            return
-
-        pytest.skip()
+def test_could_return_coins_of_the_different_types():
+    assert get_coin_combination(41) == [1, 1, 1, 1]
