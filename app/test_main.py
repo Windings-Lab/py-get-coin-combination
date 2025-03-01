@@ -20,5 +20,6 @@ class TestCoinCombination:
         result = get_coin_combination(cents)
         assert result[2] < 3
 
-def test_could_return_coins_of_the_different_types():
+
+def test_could_return_coins_of_the_different_types() -> None:
     assert get_coin_combination(41) == [1, 1, 1, 1]
